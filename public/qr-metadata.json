@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-11-10T08:15:37.633Z",
+  "token": "B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+  "targets": [
+    {
+      "name": "Official EBL Hub Portal",
+      "url": "https://selfservicehub.ebl-bd.com//ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+      "primaryFile": "public/ebl-qr-official.png"
+    },
+    {
+      "name": "Local Network Portal (Scan from Phone on WiFi)",
+      "url": "http://192.168.1.77:5173/ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+      "primaryFile": "public/ebl-qr-lan.png"
+    },
+    {
+      "name": "Default Portal QR (Primary)",
+      "url": "http://localhost:5173/ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+      "primaryFile": "public/ebl-portal-qr.png"
+    }
+  ]
+}
