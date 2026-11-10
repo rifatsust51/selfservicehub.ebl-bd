@@ -1,21 +1,30 @@
 {
-  "generatedAt": "2026-11-10T08:15:37.633Z",
-  "token": "B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+  "generatedAt": "2026-11-10T08:45:51.344Z",
+  "baseUrl": "https://selfservicehubebl-bd.vercel.app/ebl-cert-portal-flat/verify.php",
   "targets": [
     {
-      "name": "Official EBL Hub Portal",
-      "url": "https://selfservicehub.ebl-bd.com//ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
-      "primaryFile": "public/ebl-qr-official.png"
-    },
-    {
-      "name": "Local Network Portal (Scan from Phone on WiFi)",
-      "url": "http://192.168.1.77:5173/ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
-      "primaryFile": "public/ebl-qr-lan.png"
-    },
-    {
-      "name": "Default Portal QR (Primary)",
-      "url": "http://localhost:5173/ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+      "name": "Default Vercel Portal QR (Original Document)",
+      "token": "B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
+      "url": "https://selfservicehubebl-bd.vercel.app/ebl-cert-portal-flat/verify.php?qr=B5B80F8F46A78378F37C409D126211C4E4E947B518B1EF38BAB467EA41CB96CB",
       "primaryFile": "public/ebl-portal-qr.png"
+    },
+    {
+      "name": "Statement 1 (New User Name, Same Everything Else)",
+      "token": "A1C49F7D832B10E659D824E312759B4A091E72D8534C118A620F93E417C2B801",
+      "url": "https://selfservicehubebl-bd.vercel.app/ebl-cert-portal-flat/verify.php?qr=A1C49F7D832B10E659D824E312759B4A091E72D8534C118A620F93E417C2B801",
+      "primaryFile": "public/qr-statement-1.png"
+    },
+    {
+      "name": "Statement 2 (Same User Name, Changed Amounts)",
+      "token": "C2D81E5F943A21F760E935F423860C5B102F83E9645D229B731A04F528D3C912",
+      "url": "https://selfservicehubebl-bd.vercel.app/ebl-cert-portal-flat/verify.php?qr=C2D81E5F943A21F760E935F423860C5B102F83E9645D229B731A04F528D3C912",
+      "primaryFile": "public/qr-statement-2.png"
+    },
+    {
+      "name": "Statement 3 (New Name and Changed Amounts)",
+      "token": "E3F92A6B054B32A871FA46A534971D6C213A94FA756E330C842B15A639E4DA23",
+      "url": "https://selfservicehubebl-bd.vercel.app/ebl-cert-portal-flat/verify.php?qr=E3F92A6B054B32A871FA46A534971D6C213A94FA756E330C842B15A639E4DA23",
+      "primaryFile": "public/qr-statement-3.png"
     }
   ]
 }

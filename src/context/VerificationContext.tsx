@@ -14,20 +14,42 @@ interface VerificationContextType {
 
 const VerificationContext = createContext<VerificationContextType | undefined>(undefined);
 
+// Helper to reliably extract the token from React Router or directly from window.location
+export const extractQrToken = (searchParams?: URLSearchParams): string => {
+  if (searchParams) {
+    const t = searchParams.get('qr');
+    if (t) return t.trim().toUpperCase();
+  }
+
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('qr');
+    if (urlToken) return urlToken.trim().toUpperCase();
+
+    // Check hash for #qr=... or #/...?qr=...
+    if (window.location.hash) {
+      const hashQuery = window.location.hash.split('?')[1];
+      if (hashQuery) {
+        const hashParams = new URLSearchParams(hashQuery);
+        const hashToken = hashParams.get('qr');
+        if (hashToken) return hashToken.trim().toUpperCase();
+      }
+    }
+  }
+
+  return DEFAULT_QR_TOKEN;
+};
+
 export const VerificationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [searchParams] = useSearchParams();
-  const initialToken = searchParams.get('qr') || DEFAULT_QR_TOKEN;
-
-  const [qrToken, setQrToken] = useState<string>(initialToken);
+  const [qrToken, setQrToken] = useState<string>(() => extractQrToken(searchParams));
   const [state, setState] = useState<VerificationState>('idle');
   const [document, setDocument] = useState<DocumentDetails | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    const urlToken = searchParams.get('qr');
-    if (urlToken) {
-      setQrToken(urlToken);
-    }
+    const token = extractQrToken(searchParams);
+    setQrToken(token);
   }, [searchParams]);
 
   const verifyCaptcha = (userAnswer: string, expectedAnswer: string): boolean => {
@@ -47,7 +69,10 @@ export const VerificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     setErrorMessage(null);
     setState('verifying');
 
-    const doc = documentDatabase[qrToken] || primaryDocument;
+    // Retrieve active token directly from URL or state
+    const currentToken = extractQrToken(searchParams) || qrToken;
+    const doc = documentDatabase[currentToken] || primaryDocument;
+
     setDocument(doc);
     setState('verified');
     return true;
